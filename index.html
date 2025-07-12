@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haikyuu RPG</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d0d0d;
+      color: #fefefe;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff6600, #cc3300);
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .panel {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+      height: 500px;
+      overflow-y: auto;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      color: #ff9933;
+    }
+
+    .message-input {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .send-btn {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      background-color: #cc5200;
+    }
+
+    .team-lineup {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .player {
+      background-color: #333;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Haikyuu RPG
+  </header>
+  <div class="container">
+    <!-- Chat panel -->
+    <div class="panel">
+      <h2>Team Chat</h2>
+      <div id="chatMessages">
+        <!-- Messages will go here -->
+      </div>
+      <input type="text" class="message-input" id="chatInput" placeholder="Type your message...">
+      <button class="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- Battle Log & Field View -->
+    <div class="panel">
+      <h2>Match Battle Log</h2>
+      <div id="battleLog">
+        <p>🏐 Hinata spikes through the blockers!</p>
+        <p>🧠 Kageyama sets a fast one!</p>
+      </div>
+    </div>
+
+    <!-- Player Stats Panel -->
+    <div class="panel">
+      <h2>Team Lineup</h2>
+      <div class="team-lineup">
+        <div class="player">Hinata - Middle Blocker</div>
+        <div class="player">Kageyama - Setter</div>
+        <div class="player">Tsukishima - Blocker</div>
+        <div class="player">Nishinoya - Libero</div>
+        <div class="player">Tanaka - Wing Spiker</div>
+        <div class="player">Daichi - Captain</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const chatMessages = document.getElementById('chatMessages');
+      const msg = input.value.trim();
+      if (msg !== '') {
+        const p = document.createElement('p');
+        p.textContent = msg;
+        chatMessages.appendChild(p);
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
